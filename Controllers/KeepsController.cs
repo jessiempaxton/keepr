@@ -36,13 +36,13 @@ namespace keepr.Controllers
     // GET keeps by logged in user - api/keeps/user
     [Authorize]
     [HttpGet("user")]
-    public ActionResult<Keep> GetUserKeeps(int userId)
+    //like bugreport 
+    public ActionResult<Keep> GetUserKeeps()
     {
       try
       {
-        var id = HttpContext.User.FindFirstValue("Id");
-        var user = _repo.GetById(userId);
-        return Ok(_repo.GetById(userId));
+        var id = HttpContext.User.FindFirstValue("UserId");
+        return Ok(_repo.GetByUser(id)); //returns a list of type keep from db query
       }
       catch (Exception e)
       {
@@ -51,7 +51,7 @@ namespace keepr.Controllers
     }
 
     //GET keep by Id - api/keeps/:keepId
-    [HttpGet("{user}")]
+    [HttpGet("{id}")]
     public ActionResult<Keep> GetKeep(int id)
     {
       try

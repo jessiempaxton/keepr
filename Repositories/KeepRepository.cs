@@ -19,12 +19,10 @@ namespace keepr.Controllers
       return _db.Query<Keep>("SELECT * FROM keeps");
     }
 
-    public Keep GetById(int userId)
+    public IEnumerable<Keep> GetByUser(string id)
     {
-      string query = "SELECT * FROM keeps WHERE userId = @Id";
-      Keep data = _db.QueryFirstOrDefault<Keep>(query, new { userId });
-      if (data == null) throw new Exception("Invalid Id");
-      return data;
+      return _db.Query<Keep>("SELECT * FROM keeps WHERE userID = @Id");
+      //returns a list of type keep from db query
     }
 
     public Keep GetKeepById(int keepId)
