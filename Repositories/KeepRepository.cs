@@ -21,7 +21,7 @@ namespace keepr.Controllers
 
     public Keep GetById(int userId)
     {
-      string query = "SELECT * FROM keeps WHERE userId = @id";
+      string query = "SELECT * FROM keeps WHERE userId = @Id";
       Keep data = _db.QueryFirstOrDefault<Keep>(query, new { userId });
       if (data == null) throw new Exception("Invalid Id");
       return data;

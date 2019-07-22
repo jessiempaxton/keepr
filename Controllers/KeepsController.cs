@@ -40,7 +40,7 @@ namespace keepr.Controllers
     {
       try
       {
-        var id = HttpContext.User.FindFirstValue("userId");
+        var id = HttpContext.User.FindFirstValue("Id");
         var user = _repo.GetById(userId);
         return Ok(_repo.GetById(userId));
       }
@@ -65,18 +65,16 @@ namespace keepr.Controllers
     }
 
     // POST api/keeps
+    [Authorize]
     [HttpPost]
     public ActionResult<Keep> Post([FromBody] Keep value)
     {
-      try
+      value.UserId = HttpContext.User.FindFirstValue("Id");
+      if (value.UserId != null)
       {
-        var id = HttpContext.User.FindFirstValue("userId");
         return Ok(_repo.Create(value));
       }
-      catch (Exception e)
-      {
-        return BadRequest(e);
-      }
+      return BadRequest();
     }
 
     // PUT api/keeps/5
