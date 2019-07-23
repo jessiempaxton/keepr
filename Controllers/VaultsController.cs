@@ -16,7 +16,7 @@ namespace keepr.Controllers
       _repo = repo;
     }
 
-    // GET api/values
+    // GET api/vaults
     [HttpGet]
     public ActionResult<IEnumerable<Vault>> Get()
     {
@@ -30,9 +30,9 @@ namespace keepr.Controllers
       }
     }
 
-    // GET api/values/5
+    // GET api/vaults/5
     [HttpGet("{id}")]
-    public ActionResult<Vault> Get(string id)
+    public ActionResult<Vault> Get(int id)
     {
       try
       {
@@ -44,7 +44,7 @@ namespace keepr.Controllers
       }
     }
 
-    // POST api/values
+    // POST api/vaults
     [HttpPost]
     public ActionResult<Vault> Post([FromBody] Vault value)
     {
@@ -59,7 +59,7 @@ namespace keepr.Controllers
       }
     }
 
-    // PUT api/values/5
+    // PUT api/vaults/5
     [HttpPut("{id}")]
     public ActionResult<Vault> Put(int id, [FromBody] Vault value)
     {
@@ -74,7 +74,7 @@ namespace keepr.Controllers
       }
     }
 
-    // DELETE api/values/5
+    // DELETE api/vaults/5
     [HttpDelete("{id}")]
     public ActionResult<String> Delete(int id)
     {

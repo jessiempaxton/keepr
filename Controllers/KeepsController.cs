@@ -52,29 +52,32 @@ namespace keepr.Controllers
 
     // GET keep by Id - api/keeps/:keepId
     [HttpGet("{id}")]
-    // public ActionResult<Keep> GetKeep(int id)
-    // {
-    //   try
-    //   {
-    //     return Ok(_repo.GetKeepById(id));
-    //   }
-    //   catch (Exception e)
-    //   {
-    //     return BadRequest(e);
-    //   }
-    // }
+    public ActionResult<Keep> GetKeep(int id)
+    {
+      try
+      {
+        return Ok(_repo.GetById(id));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e);
+      }
+    }
 
     // POST api/keeps
     [Authorize]
     [HttpPost]
     public ActionResult<Keep> Post([FromBody] Keep value)
     {
-      value.UserId = HttpContext.User.FindFirstValue("Id");
-      if (value.UserId != null)
+      try
       {
+        value.UserId = HttpContext.User.FindFirstValue("Id");
         return Ok(_repo.Create(value));
       }
-      return BadRequest();
+      catch (Exception e)
+      {
+        return BadRequest(e);
+      }
     }
 
     // PUT api/keeps/5

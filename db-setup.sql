@@ -1,5 +1,7 @@
 USE kpr;
 
+-- ALTER TABLE keeps 
+-- ALTER COLUMN isPrivate TINYINT DEFAULT 0;
 -- CREATE TABLE users (
 --     id VARCHAR(255) NOT NULL,
 --     username VARCHAR(20) NOT NULL,
@@ -37,6 +39,7 @@ USE kpr;
 --         ON DELETE CASCADE,  
 --     PRIMARY KEY (id)
 -- );
+
 
 -- CREATE TABLE vaultkeeps (
 --     id int NOT NULL AUTO_INCREMENT,

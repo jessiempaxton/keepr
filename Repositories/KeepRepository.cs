@@ -24,13 +24,13 @@ namespace keepr.Controllers
       return _db.Query<Keep>("SELECT * FROM keeps WHERE userId = @Id");
     }
 
-    // public Keep GetKeepById(int keepId)
-    // {
-    //   string query = @"
-    //             SELECT * FROM games
-    //             WHERE keepId = @Id";
-    //   return _db.Query<Keep>(query, new { keepId });
-    // }
+    public Keep GetById(int id)
+    {
+      string query = "SELECT * FROM keeps WHERE id = @id";
+      Keep data = _db.QueryFirstOrDefault<Keep>(query, new { id });
+      if (data == null) throw new Exception("Invalid Id");
+      return data;
+    }
 
 
     public Keep Create(Keep value)
@@ -51,13 +51,12 @@ namespace keepr.Controllers
             UPDATE keeps
             SET
                 name = @Name,
-                description = @Description
-                userId = @UserId
+                description = @Description,
+                img = @Img,
                 isPrivate = @IsPrivate
-                views = @Views
-                keeps = @Keeps
             WHERE id = @Id;            
-            SELECT * FROM keeps WHERE id = @Id";
+            SELECT * FROM keeps WHERE id = @Id;
+            ";
       return _db.QueryFirstOrDefault<Keep>(query, value);
     }
 
