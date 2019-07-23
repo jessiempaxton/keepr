@@ -27,6 +27,16 @@ namespace keepr.Controllers
       return data;
     }
 
+    public IEnumerable<Keep> GetKeepsByVaultId(int id)
+    {
+      string query = @"
+      SELECT * FROM vaultkeeps vk
+      INNER JOIN keeps k ON k.id = vk.keepsId
+      WHERE vaultId = @id;
+      ";
+      return _db.Query<Keep>(query, new { id });
+    }
+
     public Vault Create(Vault value)
     {
       string query = @"

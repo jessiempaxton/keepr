@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using keepr.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,6 +43,19 @@ namespace keepr.Controllers
         return BadRequest(e);
       }
     }
+    //GET api/vault/:id/keeps
+    [HttpGet("{id}/keeps")]
+    public ActionResult<IEnumerable<Keep>> GetKeepsByVaultId(int id)
+    {
+      try
+      {
+        return Ok(_repo.GetKeepsByVaultId(id));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e);
+      }
+    }
 
     // POST api/values
     [HttpPost]
@@ -49,6 +63,7 @@ namespace keepr.Controllers
     {
       try
       {
+        value.UserId = HttpContext.User.FindFirstValue("Id");
         return Ok(_repo.Create(value));
       }
       catch (Exception e)
