@@ -31,7 +31,7 @@ namespace keepr.Controllers
 
     // GET api/values/5
     [HttpGet("{id}")]
-    public ActionResult<Vault> Get(int id)
+    public ActionResult<Vault> Get(string id)
     {
       try
       {

@@ -50,19 +50,19 @@ namespace keepr.Controllers
       }
     }
 
-    //GET keep by Id - api/keeps/:keepId
+    // GET keep by Id - api/keeps/:keepId
     [HttpGet("{id}")]
-    public ActionResult<Keep> GetKeep(int id)
-    {
-      try
-      {
-        return Ok(_repo.GetKeepById(id));
-      }
-      catch (Exception e)
-      {
-        return BadRequest(e);
-      }
-    }
+    // public ActionResult<Keep> GetKeep(int id)
+    // {
+    //   try
+    //   {
+    //     return Ok(_repo.GetKeepById(id));
+    //   }
+    //   catch (Exception e)
+    //   {
+    //     return BadRequest(e);
+    //   }
+    // }
 
     // POST api/keeps
     [Authorize]

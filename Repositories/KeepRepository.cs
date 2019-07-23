@@ -21,17 +21,17 @@ namespace keepr.Controllers
 
     public IEnumerable<Keep> GetByUser(string id)
     {
-      return _db.Query<Keep>("SELECT * FROM keeps WHERE userID = @Id");
-      //returns a list of type keep from db query
+      return _db.Query<Keep>("SELECT * FROM keeps WHERE userId = @Id");
     }
 
-    public Keep GetKeepById(int keepId)
-    {
-      string query = "SELECT * FROM keeps WHERE keepId = @KeepId";
-      Keep data = _db.QueryFirstOrDefault<Keep>(query, new { keepId });
-      if (data == null) throw new Exception("Invalid Id");
-      return data;
-    }
+    // public Keep GetKeepById(int keepId)
+    // {
+    //   string query = @"
+    //             SELECT * FROM games
+    //             WHERE keepId = @Id";
+    //   return _db.Query<Keep>(query, new { keepId });
+    // }
+
 
     public Keep Create(Keep value)
     {
