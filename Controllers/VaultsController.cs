@@ -43,19 +43,6 @@ namespace keepr.Controllers
         return BadRequest(e);
       }
     }
-    //GET api/vault/:id/keeps
-    [HttpGet("{id}/keeps")]
-    public ActionResult<IEnumerable<Keep>> GetKeepsByVaultId(int id)
-    {
-      try
-      {
-        return Ok(_repo.GetKeepsByVaultId(id));
-      }
-      catch (Exception e)
-      {
-        return BadRequest(e);
-      }
-    }
 
     // POST api/values
     [HttpPost]
