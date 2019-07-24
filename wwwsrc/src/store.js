@@ -16,7 +16,9 @@ let api = Axios.create({
 
 export default new Vuex.Store({
   state: {
-    user: {}
+    user: {},
+    keeps: [],
+    vaults: []
   },
   mutations: {
     setUser(state, user) {
@@ -25,6 +27,18 @@ export default new Vuex.Store({
     resetState(state) {
       //clear the entire state object of user data
       state.user = {}
+    },
+    setKeeps(state, keep) {
+      state.keeps = keep
+    },
+    setVaults(state, vault) {
+      state.vaults = vault
+    },
+    addKeep(state, keep) {
+      state.keeps.push(keep)
+    },
+    addVault(state, vault) {
+      state.vaults.push(vault)
     }
   },
   actions: {
@@ -55,6 +69,54 @@ export default new Vuex.Store({
       } catch (e) {
         console.warn(e.message)
       }
+    },
+    //KEEPS
+    getKeeps({ commit, dispatch }) {
+      api.get('keeps')
+        .then(res => {
+          commit('setKeeps', res.data)
+        })
+    },
+    async createKeep({ commit, dispatch }, data) {
+      try {
+        let res = await api.post('keeps', data)
+        dispatch('getKeeps')
+      } catch (error) { console.error(error) }
+    },
+    async addKeep({ commit, dispatch }, payload) {
+      try {
+        let res = await api.put("vaultkeeps/" + payload)
+        dispatch('getKeeps', payload.vaultId)
+        debugger
+        dispatch('getKeeps', payload.oldId)
+        console.log(res)
+      } catch (error) { console.error(error) }
+    },
+    deleteKeep({ commit, dispatch }, keepId) {
+      api.delete("keeps/" + keepId)
+        .then(res => {
+          dispatch('getKeeps')
+        })
+    },
+    //VAULTS
+    getVaults({ commit, dispatch }) {
+      api.get('vaults')
+        .then(res => {
+          commit('setVaults', res.data)
+        })
+    },
+    async createVault({ commit, dispatch }, data) {
+      try {
+        let res = await api.post('vaults', data)
+        dispatch('getVaults')
+      } catch (error) { console.error(error) }
+    },
+    deleteVault({ commit, dispatch }, vaultId) {
+      api.delete("vaults/" + vaultId)
+        .then(res => {
+          dispatch('getVaults')
+        })
     }
+
   }
 })
