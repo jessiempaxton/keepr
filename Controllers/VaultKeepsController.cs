@@ -16,7 +16,6 @@ namespace keepr.Controllers
     {
       _repo = repo;
     }
-
     //GET /vaultkeeps/:vaultId
     [HttpGet("{:vaultId}")]
     public ActionResult<IEnumerable<Keep>> GetVKByVaultId(int id)
@@ -30,7 +29,6 @@ namespace keepr.Controllers
         return BadRequest(e);
       }
     }
-
     //POST /vaultkeeps
     [HttpPost]
     public ActionResult<VaultKeeps> Post([FromBody] VaultKeeps value)
@@ -45,7 +43,6 @@ namespace keepr.Controllers
         return BadRequest(e);
       }
     }
-
     //DELETE vaultkeeps
     [Authorize]
     [HttpPut]

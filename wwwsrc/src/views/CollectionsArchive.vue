@@ -5,7 +5,7 @@
       <div class="col">
         <h4>ARCHIVE</h4>
         <div class="col" v-for="vaultKeep in vaultKeeps" :key="vaultKeep.id">
-          <!-- {{vaultKeep..?}} -->
+          {{vaultKeeps}}
         </div>
       </div>
     </div>
