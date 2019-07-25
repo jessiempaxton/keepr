@@ -29,8 +29,9 @@ export default new Router({
       component: Collections
     },
     {
-      path: '/collectionsarchive',
+      path: '/collections/:id',
       name: 'collectionsArchive',
+      props: true,
       component: CollectionsArchive
     }
   ]

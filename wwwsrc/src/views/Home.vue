@@ -88,7 +88,7 @@
         // this.vaultKeep = this.selected
         // this.newVaultKeep.push(this.keepId)
         // this.newVaultKeep.push(this.vaultId)
-        let vaultKeep = { keepId, selected }
+        let vaultKeep = { keepId, vaultId: this.selected }
         this.$store.dispatch("addKeep", vaultKeep)
       },
       deleteKeep(keepId) {

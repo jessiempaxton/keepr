@@ -3,7 +3,7 @@
    <div class="collections">
       <div class="row">
          <div class="col-12">
-            <h2>VAULTS</h2>
+            <h2>COLLECTIONS</h2>
          </div>
          <!-- <div class="col" v-for="vaulkeeps in vaultkeeps" :key="vaultkeep.id"></div> -->
          <div class="col" v-for="vault in vaults" :key="vault.id">

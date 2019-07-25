@@ -15,8 +15,9 @@ namespace keepr.Controllers
     {
       _repo = repo;
     }
-
     // GET api/vaults
+    //needs userId with HttpContext line 55
+    //repo says only give me vaults where user id = logged in user(whatever you pass from here)
     [HttpGet]
     public ActionResult<IEnumerable<Vault>> Get()
     {
@@ -29,7 +30,6 @@ namespace keepr.Controllers
         return BadRequest(e);
       }
     }
-
     // GET api/vaults/5
     [HttpGet("{id}")]
     public ActionResult<Vault> Get(int id)
@@ -43,7 +43,6 @@ namespace keepr.Controllers
         return BadRequest(e);
       }
     }
-
     // POST api/vaults
     [HttpPost]
     public ActionResult<Vault> Post([FromBody] Vault value)
@@ -58,7 +57,6 @@ namespace keepr.Controllers
         return BadRequest(e);
       }
     }
-
     // PUT api/vaults/5
     [HttpPut("{id}")]
     public ActionResult<Vault> Put(int id, [FromBody] Vault value)
@@ -73,7 +71,6 @@ namespace keepr.Controllers
         return BadRequest(e);
       }
     }
-
     // DELETE api/vaults/5
     [HttpDelete("{id}")]
     public ActionResult<String> Delete(int id)
