@@ -14,9 +14,9 @@ namespace keepr.Controllers
       _db = db;
     }
 
-    public IEnumerable<Vault> GetALL()
+    public IEnumerable<Vault> GetALL(string id)
     {
-      return _db.Query<Vault>("SELECT * FROM vaults");
+      return _db.Query<Vault>("SELECT * FROM vaults WHERE userId = @id", new { id });
     }
 
     public Vault GetById(int id)

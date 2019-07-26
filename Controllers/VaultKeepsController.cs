@@ -17,12 +17,12 @@ namespace keepr.Controllers
       _repo = repo;
     }
     //GET /vaultkeeps/:vaultId
-    [HttpGet("{:vaultId}")]
-    public ActionResult<IEnumerable<Keep>> GetVKByVaultId(int id)
+    [HttpGet("{vaultId}")]
+    public ActionResult<IEnumerable<Keep>> GetVKByVaultId(int vaultId)
     {
       try
       {
-        return Ok(_repo.GetVKByVaultId(id));
+        return Ok(_repo.GetVKByVaultId(vaultId));
       }
       catch (Exception e)
       {

@@ -23,7 +23,8 @@ namespace keepr.Controllers
     {
       try
       {
-        return Ok(_repo.GetALL());
+        var id = HttpContext.User.FindFirstValue("Id");
+        return Ok(_repo.GetALL(id));
       }
       catch (Exception e)
       {

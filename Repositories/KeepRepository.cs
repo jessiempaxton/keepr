@@ -14,14 +14,14 @@ namespace keepr.Controllers
       _db = db;
     }
 
-    public IEnumerable<Keep> GetALL()
+    public IEnumerable<Keep> GetALL(string id)
     {
-      return _db.Query<Keep>("SELECT * FROM keeps");
+      return _db.Query<Keep>("SELECT * FROM keeps WHERE isPrivate = 0;", new { id });
     }
 
     public IEnumerable<Keep> GetByUser(string id)
     {
-      return _db.Query<Keep>("SELECT * FROM keeps WHERE userId = @Id");
+      return _db.Query<Keep>("SELECT * FROM keeps WHERE userId = @id", new { id });
     }
 
     public Keep GetById(int id)
@@ -62,6 +62,7 @@ namespace keepr.Controllers
 
     public string Delete(int id)
     {
+      //TODO add AND userID = @userId pass into config object on 67 and on 63 in parameters
       string query = "DELETE FROM keeps WHERE id = @Id";
       int changedRows = _db.Execute(query, new { id });
       if (changedRows < 1) throw new Exception("Invalid Id");

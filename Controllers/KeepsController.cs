@@ -18,21 +18,20 @@ namespace keepr.Controllers
     {
       _repo = repo;
     }
-
     // GET public keeps - api/keeps
     [HttpGet]
     public ActionResult<IEnumerable<Keep>> Get()
     {
       try
       {
-        return Ok(_repo.GetALL());
+        var id = HttpContext.User.FindFirstValue("Id");
+        return Ok(_repo.GetALL(id));
       }
       catch (Exception e)
       {
         return BadRequest(e);
       }
     }
-
     // GET keeps by logged in user - api/keeps/user
     [Authorize]
     [HttpGet("user")]
@@ -41,7 +40,7 @@ namespace keepr.Controllers
     {
       try
       {
-        var id = HttpContext.User.FindFirstValue("UserId");
+        var id = HttpContext.User.FindFirstValue("Id");
         return Ok(_repo.GetByUser(id)); //returns a list of type keep from db query
       }
       catch (Exception e)

@@ -63,6 +63,7 @@ USE kpr;
 --         REFERENCES keeps(id)
 --         ON DELETE CASCADE
 -- )
+SELECT * FROM keeps WHERE isPrivate = 0;
 
 
 -- -- USE THIS LINE FOR GET KEEPS BY VAULTID
