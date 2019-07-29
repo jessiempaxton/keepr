@@ -4,6 +4,16 @@
   </div>
 </template>
 
+<script>
+  export default {
+    name: "app",
+    computed: {
+      user() {
+        return this.$store.state.user;
+      },
+    }
+  }
+</script>
 <style>
   #app {
     font-family: "Avenir", Helvetica, Arial, sans-serif;
