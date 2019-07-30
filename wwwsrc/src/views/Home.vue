@@ -1,8 +1,11 @@
 <template>
   <div class="home">
     <!-- WHERE KEEPS RENDER -->
-    <div class="row keeps">
-      <div class="col-lg-3 col-md-4 col-sm-6" v-if="user.id" v-for="keep in keeps" :key="keep.id">
+    <div class="row keeps mt-2">
+      <div class="col-12">
+        <h2>Welcome Home {{user.username}}</h2>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6" v-for="keep in keeps" :key="keep.id">
         <div class="card" style="width: 16rem;">
           <img src="" class="card-img-top" alt="image">
           <div class="card-body">
@@ -52,7 +55,7 @@
         return this.$store.state.user;
       },
       keeps() {
-        return this.$store.state.keeps
+        return this.$store.state.keeps;
       },
       vaults() {
         return this.$store.state.vaults;
