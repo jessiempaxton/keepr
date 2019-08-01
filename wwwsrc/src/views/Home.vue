@@ -7,7 +7,7 @@
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6" v-for="keep in keeps" :key="keep.id">
         <div class="card" style="width: 16rem;">
-          <img src="" class="card-img-top" alt="image">
+          <img :src="keep.img" class="card-img-top" alt="image">
           <div class="card-body">
             <h5 class="card-title">{{keep.name}}</h5>
             <p class="card-text">{{keep.description}}
@@ -72,7 +72,6 @@
 <style scoped>
   .keeps {
     background-color: #f4f4f4;
-    height: 100%;
   }
 
   .card {

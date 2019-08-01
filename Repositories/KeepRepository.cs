@@ -36,8 +36,8 @@ namespace keepr.Controllers
     public Keep Create(Keep value)
     {
       string query = @"
-            INSERT INTO keeps (name, description, userId, isPrivate, views, keeps)
-                    VALUES (@Name, @Description, @UserId, @IsPrivate, @Views, @Keeps);
+            INSERT INTO keeps (name, img, description, userId, isPrivate, views, keeps)
+                    VALUES (@Name, @Img, @Description, @UserId, @IsPrivate, @Views, @Keeps);
                     SELECT LAST_INSERT_ID();
             ";
       int id = _db.ExecuteScalar<int>(query, value);

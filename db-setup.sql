@@ -1,5 +1,6 @@
 USE kpr;
 
+-- SELECT * from keeps;
 -- ALTER TABLE keeps 
 -- ALTER COLUMN isPrivate TINYINT DEFAULT 0;
 -- CREATE TABLE users (
@@ -63,7 +64,7 @@ USE kpr;
 --         REFERENCES keeps(id)
 --         ON DELETE CASCADE
 -- )
-SELECT * FROM keeps WHERE isPrivate = 0;
+-- SELECT * FROM keeps WHERE isPrivate = 0;
 
 
 -- -- USE THIS LINE FOR GET KEEPS BY VAULTID

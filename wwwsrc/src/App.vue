@@ -32,7 +32,7 @@
               </li>
             </ul>
             <button class="btn btn-secondary p-0" v-if="user.id" @click="logout">Logout</button>
-            <router-link v-else :to="{name: 'login'}">Login</router-link>
+            <router-link style="color: black" v-else :to="{name: 'login'}">Login</router-link>
           </div>
         </nav>
       </div>
@@ -76,11 +76,12 @@
           </div>
           <div class="modal-body">
             <form v-if="user.id" @submit.prevent="createVault">
+              <!-- <form v-else>Please Login or Register to Create Collection</form> -->
               <input required v-model="newVault.name" type="text" class="form-control form-control-sm"
                 placeholder="Collection Name">
               <input required v-model="newVault.description" type="text" class="form-control form-control-sm mb-1"
                 placeholder="Description">
-              <button type="submit">Submit</button>
+              <button class="btn btn-secondary" type="submit">Submit</button>
             </form>
           </div>
         </div>
@@ -144,6 +145,7 @@
     text-align: center;
     color: #2c3e50;
     background-color: #f4f4f4;
+    height: 100vh;
   }
 
   #nav {
@@ -157,5 +159,9 @@
 
   #nav a.router-link-exact-active {
     color: #42b983;
+  }
+
+  .router-link {
+    color: black;
   }
 </style>
