@@ -1,4 +1,3 @@
-<!-- vault/:id -->
 <template>
   <div class="container">
     <div class="row">

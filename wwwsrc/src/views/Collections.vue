@@ -1,11 +1,12 @@
-<!-- dashboard -->
 <template>
    <div class="collections">
       <div class="row">
          <div class="col-12">
             <h2>COLLECTIONS</h2>
          </div>
-         <div class="col-4">
+      </div>
+      <div class="row">
+         <div class="col-8">
             <h4>Your Posts</h4>
             <div class="col" v-for="keep in userKeeps" :key="keep.id">
                <div class="card" style="width: 16rem;">
@@ -17,14 +18,11 @@
                      <button @click="deleteKeep(keep.id)">Delete</button>
                   </div>
                </div>
-               <!-- <b>(IMAGE)</b>{{keep.img}} <b>(NAME)</b>{{keep.name}} <b>(DESC)</b>{{keep.description}}
-               <b>(PRIVATE?)</b>{{keep.isPrivate}}
-               <button @click="deleteKeep(keep.id)">Delete</button> -->
             </div>
          </div>
-         <div class="col-8">
+         <div class="col-4">
             <h4>Your Collections</h4>
-            <div class="col-4" v-for="vault in vaults" :key="vault.id">
+            <div class="col" v-for="vault in vaults" :key="vault.id">
                <div class="card" style="width: 10rem;">
                   <div class="card-body">
                      <h5 class="card-title">
@@ -36,12 +34,10 @@
                      <button @click="deleteVault(vault.id)">Delete</button>
                   </div>
                </div>
-               <!-- <router-link :to="{name: 'collectionsArchive', params: {id: vault.id}}">
-                  <b>(NAME)</b>{{vault.name}} <b>(DESCRIPTION)</b>{{vault.description}}</router-link>
-               <button @click="deleteVault(vault.id)">Delete</button> -->
             </div>
          </div>
       </div>
+   </div>
 
    </div>
 </template>
