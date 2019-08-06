@@ -1,23 +1,23 @@
 <template>
-  <div class="card keeps" style="width: 16rem;">
-    <img :src="keeps.img" class="card-img-top" alt="image">
-    <div class="card-body">
-      <h5 class="card-title">{{keeps.name}}</h5>
-      <p class="card-text">{{keeps.description}}
-      </p>
+  <div class="home row">
+    <div v-for="keep in keepsData" class="card keeps col-3" style="width: 16rem; height: 30rem;">
+      <img :src="keep.img" class="card-img-top" alt="image">
+      <div class="card-body">
+        <h5 class="card-title">{{keep.name}}</h5>
+        <p class="card-text">{{keep.description}}
+        </p>
+      </div>
+      <!-- <ul class="list-group list-group-flush">
+        <li class="list-group-item">Private: {{keep.isPrivate}} - Views:
+          {{keep.views}}</li>
+        <li class="list-group-item">Shares: {{keep.shares}} - Keeps:
+          {{keep.shares}}</li>
+      </ul> -->
+      <select v-model="selected" @change="addKeep(keep.id)" style="margin: 1vh;">
+        <option disabled value>Archive to Collection</option>
+        <option v-for="vault in vaults" :value="vault.id">{{vault.name}}</option>
+      </select>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item" style="background-color: #e2c175">Private: {{keeps.isPrivate}} - Views:
-        {{keeps.views}}</li>
-      <li class="list-group-item" style="background-color: #e2c175">Shares: {{keeps.shares}} - Keeps:
-        {{keeps.shares}}</li>
-    </ul>
-    <select v-model="selected" @change="addKeep(keep.id)">
-      <option disabled value>Archive to Collection</option>
-      <option v-for="vault in vaults" :value="vault.id">{{vault.name}}</option>
-    </select>
-  </div>
-  </div>
   </div>
 </template>
 
@@ -47,13 +47,17 @@
   }
 </script>
 <style scoped>
-  .keeps {
+  .home {
     background-color: #f4f4f4;
     height: 100%;
   }
 
   .card {
-    background-color: #e2c175;
+    /* background-color: #e2c175; */
     margin: 5vh;
+  }
+
+  .card-img-top {
+    height: auto;
   }
 </style>

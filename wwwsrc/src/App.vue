@@ -146,6 +146,7 @@
     color: #2c3e50;
     background-color: #f4f4f4;
     height: 100vh;
+    width: 100%;
   }
 
   #nav {

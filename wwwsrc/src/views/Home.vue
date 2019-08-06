@@ -5,10 +5,10 @@
         <h2>Welcome Home {{user.username}}</h2>
       </div>
       <!-- WHERE KEEPS RENDER -->
-      <div class="row">
-        <keeps v-for="keep in keeps" :key="keep.id" :keepsData="keeps" />
-      </div>
     </div>
+    <!-- <div class="row"> -->
+    <keeps :keepsData="keeps" />
+  </div>
   </div>
 </template>
 
@@ -37,6 +37,7 @@
 <style scoped>
   .keeps {
     background-color: #f4f4f4;
+    height: 100%;
   }
 
   .card {
