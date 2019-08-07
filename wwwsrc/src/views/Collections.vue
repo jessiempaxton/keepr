@@ -10,13 +10,14 @@
             <h4>Your Posts</h4>
             <div class="row">
                <div class="col-3" v-for="keep in userKeeps" :key="keep.id">
-                  <div class="card" style="width: 16rem; height: 25rem;">
+                  <div class="card" style="width: 16rem; height: 30rem; margin: 1vh;">
                      <img :src="keep.img" class="card-img-top" alt="image">
-                     <div class="card-body">
+                     <div class="card-body d-flex justify-content-end flex-column">
                         <h5 class="card-title">{{keep.name}}</h5>
                         <p class="card-text">{{keep.description}}
                         </p>
-                        <button @click="deleteKeep(keep.id)">Delete</button>
+                        <p class="card-text">{{keep.isPrivate == true ? 'Private Post' : 'Public Post'}}</p>
+                        <button class="btn btn-secondary p-1" @click="deleteKeep(keep.id)">Delete</button>
                      </div>
                   </div>
                </div>
@@ -28,7 +29,7 @@
             <h4>Your Collections</h4>
             <div class="row">
                <div class="col-2" v-for="vault in vaults" :key="vault.id">
-                  <div class="card" style="width: 10rem; height: 10rem;">
+                  <div class="card" style="width: 10rem; height: 10rem; background-color: #e2c175">
                      <div class="card-body">
                         <h5 class="card-title">
                            <router-link :to="{name: 'collectionsArchive', params: {id: vault.id}}">{{vault.name}}
@@ -36,7 +37,7 @@
                         </h5>
                         <p class="card-text">{{vault.description}}
                         </p>
-                        <button @click="deleteVault(vault.id)">Delete</button>
+                        <button class="btn btn-secondary p-1" @click="deleteVault(vault.id)">Delete</button>
                      </div>
                   </div>
                </div>
@@ -90,5 +91,11 @@
 
    .card-img-top {
       height: auto;
+   }
+
+   .collections {
+      background-color: #f4f4f4;
+      /* height: 100%;
+      width: 100%; */
    }
 </style>

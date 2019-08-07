@@ -6,7 +6,7 @@
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-lg-2">
               <li class="nav-item active">
-                <a class="nav-link" href="#" style="color: #c36a2d">
+                <a class="nav-link" href="#" style="color: #2c3e50">
                   <h4><b>COLLECTREST</b></h4>
                 </a>
               </li>
