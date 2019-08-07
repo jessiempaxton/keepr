@@ -4,11 +4,9 @@
       <div class="col-12">
         <h2>Welcome Home {{user.username}}</h2>
       </div>
-      <!-- WHERE KEEPS RENDER -->
     </div>
-    <!-- <div class="row"> -->
+    <!-- WHERE KEEPS RENDER -->
     <keeps :keepsData="keeps" />
-  </div>
   </div>
 </template>
 
@@ -33,15 +31,3 @@
     },
   }
 </script>
-
-<style scoped>
-  .keeps {
-    background-color: #f4f4f4;
-    height: 100%;
-  }
-
-  .card {
-    background-color: #e2c175;
-    margin: 5vh;
-  }
-</style>

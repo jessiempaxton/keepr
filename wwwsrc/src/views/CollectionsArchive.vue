@@ -2,17 +2,17 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <h4>ARCHIVE</h4>
-        <div class="col" v-for="keep in vaultKeeps" :key="keep.id">
-          {{keep.img}}{{keep.name}}{{keep.description}}
-          <button @click="removeKeep(keep.id)">Remove</button>
-        </div>
+        <h4>{{vaults.name}} Post Archive</h4>
+        <!-- WHERE VAULTKEEPS RENDER -->
+        <vaultKeeps :vaultKeepsData="vaultKeeps" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import VaultKeeps from '@/Components/VaultKeeps.vue'
+
   export default {
     name: "collectionsArchive",
     props: [],
@@ -23,16 +23,15 @@
       this.$store.dispatch("getVaultKeeps", this.$route.params.id);
     },
     computed: {
+      vaults() {
+        return this.$store.state.vaults;
+      },
       vaultKeeps() {
         return this.$store.state.vaultKeeps;
-      }
+      },
     },
-    methods: {
-      removeKeep(keepId) {
-        let vaultId = this.$route.params.id
-        this.$store.dispatch("removeKeep", { keepId, vaultId })
-      }
-    },
-    components: {}
+    components: {
+      VaultKeeps
+    }
   }
 </script>
