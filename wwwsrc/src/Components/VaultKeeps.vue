@@ -40,7 +40,7 @@
       removeKeep(keepId) {
         let vaultId = this.$route.params.id
         this.$store.dispatch("removeKeep", { keepId, vaultId })
-      }
+      },
     },
   }
 </script>

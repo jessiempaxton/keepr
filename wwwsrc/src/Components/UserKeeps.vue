@@ -8,6 +8,10 @@
           <p class="card-text">{{keep.description}}
           </p>
           <p class="card-text">{{keep.isPrivate == true ? 'Private Post' : 'Public Post'}}</p>
+          <select class="btn btn-secondary" v-model="selected" @change="addKeep(keep.id)" style="margin: 1vh;">
+            <option disabled value style="color:white;">Archive to Collection</option>
+            <option v-for="vault in vaults" :value="vault.id">{{vault.name}}</option>
+          </select>
           <button class="btn btn-secondary p-1" @click="deleteKeep(keep.id)">Delete</button>
         </div>
       </div>
@@ -20,7 +24,9 @@
     name: "userKeeps",
     props: ["userKeepsData"],
     data() {
-      return {}
+      return {
+        selected: "",
+      }
     },
     mounted() {
       this.$store.dispatch("getUserKeeps");
@@ -29,10 +35,17 @@
       userKeeps() {
         return this.$store.state.userKeeps;
       },
+      vaults() {
+        return this.$store.state.vaults;
+      }
     },
     methods: {
       deleteKeep(keepId) {
         this.$store.dispatch("deleteKeep", keepId)
+      },
+      addKeep(keepId) {
+        let vaultKeep = { keepId, vaultId: this.selected }
+        this.$store.dispatch("addKeep", vaultKeep)
       },
     },
     components: {}
